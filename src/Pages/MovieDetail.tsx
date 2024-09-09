@@ -80,7 +80,7 @@ export const MovieDetail = () => {
           <p className="text-4xl p-3 font-extrabold">⭐{data?.vote_average.toFixed(1)}</p>
           <br />
           <p className="mb-5 gap-2">
-            {data?.genres.map((genre, index) => (
+            {data?.genres.map((genre) => (
               <span key={genre.id} className="bg-gray-300 border font-bold border-gray-200 rounded-lg dark:border-gray-600 p-1 mr-2 w-18 text-black">
                 {genre.name}
               </span>
