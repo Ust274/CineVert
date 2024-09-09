@@ -14,7 +14,6 @@ export const Header = () => {
         const queryT = e.target.elements.search.value;
         e.target.reset();
         return navigate(`/Search?q=${queryT}`);
-
         
     }
     

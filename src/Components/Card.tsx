@@ -17,7 +17,7 @@ interface CardProps {
 
 export const Card = ({ Movie }: CardProps) => {
   const { id, title, overview, vote_average, poster_path,release_date } = Movie;
-  const rdate = release_date.replaceAll("-"," ");
+  const rdate = release_date.replace(/-/g, " ");
   const image = `https://image.tmdb.org/t/p/w400/${poster_path}`;
   const vote = vote_average.toFixed(1);
 
