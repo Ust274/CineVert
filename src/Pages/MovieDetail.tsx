@@ -33,7 +33,7 @@ export const MovieDetail = () => {
   const [data, setData] = useState<MovieData | null>(null); // Use MovieData type or null
   const [error, setError] = useState<string | null>(null); // Use string type or null
   const [loading, setLoading] = useState<boolean>(true); // Use boolean type
-  const url = `https://api.themoviedb.org/3/movie/${params.id}?api_key=c5e1ebaa4ad306d46d3c67019d707529`;
+  const url = `https://api.themoviedb.org/3/movie/${params.id}?api_key=7f2b454fb9daeb6ecef239e310a4abb2`;
 
   const image = data?.poster_path
     ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`

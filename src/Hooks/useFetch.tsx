@@ -5,7 +5,7 @@ export const useFetch = (apipath: string, queryT: string = "") => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const apiKey = "c5e1ebaa4ad306d46d3c67019d707529";
+  const apiKey = "7f2b454fb9daeb6ecef239e310a4abb2";
   const url = `https://api.themoviedb.org/3/${apipath}?api_key=${apiKey}&query=${queryT}&_=${new Date().getTime()}`;
 
   useEffect(() => {
