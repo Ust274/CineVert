@@ -7,15 +7,20 @@ export const Header = () => {
     const inActive = "text base block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
     const navigate = useNavigate();
     const [hidden,setHidden] = useState(true)
-    const handleSubmit = (e) =>
-    {
-        console.log(e.target);
-        e.preventDefault();
-        const queryT = e.target.elements.search.value;
-        e.target.reset();
-        return navigate(`/Search?q=${queryT}`);
+    interface SearchFormElements extends HTMLFormControlsCollection {
+        search: HTMLInputElement;
+    }
 
-        
+    interface SearchForm extends HTMLFormElement {
+        elements: SearchFormElements;
+    }
+
+    const handleSubmit = (e: React.FormEvent<SearchForm>) => {
+        console.log(e.currentTarget);
+        e.preventDefault();
+        const queryT = e.currentTarget.elements.search.value;
+        e.currentTarget.reset();
+        return navigate(`/Search?q=${queryT}`);
     }
     
   return (
@@ -46,7 +51,7 @@ export const Header = () => {
                 <input type="text" id="search-navbar" name="search" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." autoComplete="off"/> 
                 </form>
                 </div>
-                <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
+                <button onClick={() => setHidden(!hidden)} data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
                     <span className="sr-only">Open main menu</span>
                     <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
