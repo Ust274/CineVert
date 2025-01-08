@@ -4,7 +4,6 @@ export const PageNHK = () => {
   return (
     <>
                 <section>
-
                 <div className="bg-black text-white">
                   <div className="flex h-screen">
                     <div className="m-auto text-center">

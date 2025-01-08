@@ -51,75 +51,121 @@ export const MovieDetail = () => {
   }, [url]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-red-500 text-xl">Error: {error}</div>
+      </div>
+    );
   }
 
   if (!data) {
-    return <div>No data available</div>;
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-xl">No data available</div>
+      </div>
+    );
   }
 
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(amount);
+  };
+
   return (
-    <div className="bg-black text-white flex">
-      <section className="ml-4 mr-4 p-4 mt-3">
-        <img className="max-w-md w-full h-92" src={image} alt={data.title} />
-      </section>
-      <div className="ml-4 mr-4 p-4 mt-3">
-        <h1 className="text-white text-5xl font-extrabold pb-4">{data.title}</h1>
-        <p className="font-semibold text-md">
-          Release <span className="font-thin ml-2 italic">{data.release_date}</span>
-        </p>
-        <p className="text-4xl p-3 font-extrabold">⭐{data.vote_average.toFixed(1)}</p>
-        <br />
-        <p className="mb-5 gap-2">
-          {data.genres.slice(0, 2).map((genre, index) => (
-            <span
-              key={index}
-              className="bg-gray-300 border font-bold border-gray-200 rounded-lg dark:border-gray-600 p-1 mr-2 w-18 text-black"
-            >
-              {genre.name}
-            </span>
-          ))}
-        </p>
-        <section>
-          <p className="border font-bold border-gray-200 rounded-md dark:border-gray-600 p-3 w-56">
-            Runtime {data.runtime} mins
-          </p>
-          <p className="my-4">{data.overview}</p>
-        </section>
-        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-        <section className="text-sm">
-          <p className="font-semibold text-md">
-            origin country
-            <span className="font-thin ml-2 italic">{data.origin_country}</span>
-          </p>
-          <p className="font-semibold text-md">
-            Production
-            <span className="font-thin ml-2 italic">
-              {data.production_companies[0]?.name}
-            </span>
-          </p>
-          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-          <p className="font-semibold text-md">
-            Budget <span className="font-thin ml-2 italic">{data.budget}</span>
-          </p>
-          <p className="font-semibold text-md">
-            Revenue <span className="font-thin ml-2 italic">{data.revenue}</span>
-          </p>
-          <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-          <p className="font-semibold text-md">
-            Origin Country
-            <span className="font-thin ml-2 italic">{data.origin_country}</span>
-          </p>
-          <p className="font-semibold text-md">
-            Original Title
-            <span className="font-thin ml-2 italic">{data.original_title}</span>
-          </p>
-        </section>
+    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+          <div className="lg:w-1/3">
+            <div className="relative">
+              <img 
+                className="w-full rounded-lg shadow-2xl" 
+                src={image} 
+                alt={data.title}
+              />
+              <div className="absolute top-4 right-4 bg-black/80 rounded-full p-3">
+                <div className="flex items-center gap-1">
+                  <span className="text-yellow-400 text-xl">⭐</span>
+                  <span className="font-bold text-xl">{data.vote_average.toFixed(1)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:w-2/3">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-4">{data.title}</h1>
+            
+            <div className="flex flex-wrap gap-3 mb-6">
+              {data.genres.slice(0, 3).map((genre, index) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-white/10 rounded-full text-sm font-medium"
+                >
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="px-4 py-2 bg-white/5 rounded-lg">
+                  <span className="block text-sm text-gray-400">Release Date</span>
+                  <span className="font-medium">{data.release_date}</span>
+                </div>
+                <div className="px-4 py-2 bg-white/5 rounded-lg">
+                  <span className="block text-sm text-gray-400">Runtime</span>
+                  <span className="font-medium">{data.runtime} mins</span>
+                </div>
+              </div>
+
+              <div className="bg-white/5 rounded-lg p-6">
+                <h2 className="text-xl font-semibold mb-3">Overview</h2>
+                <p className="text-gray-300 leading-relaxed">{data.overview}</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div>
+                    <span className="block text-sm text-gray-400">Production Company</span>
+                    <span className="font-medium">{data.production_companies[0]?.name}</span>
+                  </div>
+                  <div>
+                    <span className="block text-sm text-gray-400">Origin Country</span>
+                    <span className="font-medium">{data.origin_country}</span>
+                  </div>
+                  <div>
+                    <span className="block text-sm text-gray-400">Original Title</span>
+                    <span className="font-medium">{data.original_title}</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <span className="block text-sm text-gray-400">Budget</span>
+                    <span className="font-medium">{formatCurrency(data.budget)}</span>
+                  </div>
+                  <div>
+                    <span className="block text-sm text-gray-400">Revenue</span>
+                    <span className="font-medium">{formatCurrency(data.revenue)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+export default MovieDetail;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export const Footer = () => {
   return (
-    <div className="vertical-align: text-bottom bg-gray-800">
+    <div className="vmax-w-screen-xl vertical-align: text-bottom bg-gray-800">
      
 
       <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800 vertical-align: text-bottom;">
