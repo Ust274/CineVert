@@ -1,50 +1,85 @@
-# React + TypeScript + Vite
+# CineVert
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CineVert is a movie database application built with modern web technologies. It allows users to explore and search for movies through an intuitive and responsive user interface.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the live application here: [CineVert on Vercel](https://cine-vert-2bwc.vercel.app/)
 
-## Expanding the ESLint configuration
+![image](https://github.com/user-attachments/assets/0a3fc3bf-b354-4111-b9e7-772a81c3521e)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Search for movies by title.
+- View detailed information about each movie, including release date, genre, and synopsis.
+- Clean and responsive design for optimal viewing on various devices.
+- Built with Vite, React, and TypeScript for a fast and scalable user experience.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To run CineVert locally, follow these steps:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/Ust274/CineVert.git
+   cd CineVert
+   ```
+
+2. **Install dependencies:**
+
+   Ensure you have [Node.js](https://nodejs.org/) installed, then run:
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   The application should now be running at `http://localhost:3000`.
+
+## Deployment
+
+CineVert is configured for deployment on [Vercel](https://vercel.com/). To deploy your own instance:
+
+1. **Create a Vercel account:**
+
+   Sign up at [vercel.com](https://vercel.com/signup) if you haven't already.
+
+2. **Import the project:**
+
+   In the Vercel dashboard, click "New Project" and import the CineVert repository from GitHub.
+
+3. **Configure settings:**
+
+   Ensure the build command is set to `npm run build` and the output directory is `dist`.
+
+4. **Deploy:**
+
+   Click "Deploy" to initiate the deployment process.
+
+For more detailed instructions, refer to Vercel’s [deployment documentation](https://vercel.com/docs/deployments/overview).
+
+## Tech Stack
+
+- **Frontend:** React, TypeScript, Vite
+- **Styling:** Tailwind CSS
+- **Deployment:** Vercel
+
+## Contributing
+
+Contributions are welcome! If you’d like to improve this project, please fork the repository, create a feature branch, and submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Feel free to suggest any additions or updates for this README!
+
